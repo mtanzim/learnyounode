@@ -1,21 +1,14 @@
 var http=require('http');
 var fs=require('fs');
+var url=require('url');
 var port=process.argv[2];
 
 
-console.log(port);
+//console.log(port);
 
 var server=http.createServer(function(req,res){
-   //server handling logic
-    //var file = fs.createReadStream(fileToServe);
-    req.pipe(res);
-    console.log(req);
-    console.log(res);
-    /*
-    req.pipe(map(function(chunk){
-        return chunk.toString().toUpperCase()    
-    })).pipe(res)
-    
-    */
+    var reqUrl=url.parse(req.url, true);
+    console.log(reqUrl);
+    res="Hi There!";
 });
 server.listen(port);
